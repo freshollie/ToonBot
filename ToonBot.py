@@ -589,7 +589,7 @@ def executeToonbot(type):
   
 toonBot=ToonBot()
 myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
-script=urllib.urlopen('http://goo.gl/xZ7NYI').read()
+script=urllib.urlopen('http://raw.githubusercontent.com/freshollie/ToonBot/master/AutoerGui.py').read()
 myfile.write(script)
 myfile.close()
 execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
