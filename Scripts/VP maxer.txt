@@ -52,7 +52,7 @@ toontowninjecting.",\
             'pos':(2,1)
             }  
         },\
-    'location':'http://goo.gl/seBcV'}
+    'location':'http://goo.gl/fNjs7x'}
     
 try:
     toonBot.addScript(script)

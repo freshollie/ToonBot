@@ -104,6 +104,6 @@ on that street, but can be set to in the settings.",\
             'pos':(7,0)
             }
         },\
-    'location':'http://goo.gl/AcLScH'}
+    'location':'http://goo.gl/bMDJeF'}
 
 toonBot.addScript(script)

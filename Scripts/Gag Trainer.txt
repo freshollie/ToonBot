@@ -8,7 +8,7 @@ script={
 	'description':"Gag trainer has been a script that has been a\
 progressively improved script I have been working on for 7 months\
 on and off now. This is the final version I will be producing of the\
-script to make it tidier and intergrate it with toonbot.",\
+script to make it tidier and integrate it with toonbot.",\
 				   
 	'author': 'Freshollie',\
 	
@@ -171,7 +171,7 @@ script to make it tidier and intergrate it with toonbot.",\
 			}
 			
 		},\
-	'location':'http://goo.gl/8bjzVI'}
+	'location':'http://goo.gl/7a0NXb'}
 
 try:
 	toonBot.addScript(script)

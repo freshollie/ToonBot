@@ -200,7 +200,6 @@ class Options:
         self.closeButton.setHpr(0,0,180)
         self.closeButton.hide()
         self.close()
-        
     
     def open(self):
         for side in self.sides:
@@ -240,7 +239,7 @@ class Options:
             del self.optionButtons[i]
         self.removeButtons()
         model='phase_3/models/gui/quit_button.bam'
-        buttonImgs=['QuitBtn_UP','QuitBtn_N','QuitBtn_RLVR']
+        buttonImgs=['QuitBtn_UP','QuitBtn_DN','QuitBtn_RLVR']
         for key in currentScript['options']:
             self.optionButtons.append(guiTools.createButton(eval(currentScript['options'][key]['command']), self.getButtonPos(currentScript['options'][key]['pos']), model, buttonImgs, colour=(0.5,0.1,0.5,1),text=key))
         self.updateText(currentScript)
@@ -495,7 +494,7 @@ class ToonBot:
         self.corners[5].setPos(-1.3,0,.45)
         model='phase_3/models/gui/quit_button.bam'
         
-        buttonImgs=['QuitBtn_UP','QuitBtn_N','QuitBtn_RLVR']
+        buttonImgs=['QuitBtn_UP','QuitBtn_DN','QuitBtn_RLVR']
         
         self.options=Options()
         self.about=About()
@@ -574,7 +573,7 @@ class ToonBot:
 define='''
 toonBot=executeToonbot('return')
 myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
-script=urllib.urlopen('http://goo.gl/uKTgu').read()
+script=urllib.urlopen('http://goo.gl/mr9a0r').read()
 myfile.write(script)
 myfile.close()
 execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
@@ -588,13 +587,10 @@ def executeToonbot(type):
     elif type=='return':
         return toonBot
   
-try:
-    toonBot=ToonBot()
-    myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
-    script=urllib.urlopen('http://goo.gl/uKTgu').read()
-    myfile.write(script)
-    myfile.close()
-    execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
-except:
-    Sequence(Wait(20),Func(executeToonbot,'define')).start()
+toonBot=ToonBot()
+myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
+script=urllib.urlopen('http://goo.gl/xZ7NYI').read()
+myfile.write(script)
+myfile.close()
+execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
 
