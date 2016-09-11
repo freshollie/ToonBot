@@ -6,3 +6,9 @@ I created this repository mearly for reference. These programs are no longer usa
 I am freshollie and I created videos about these scripts during 2013 on the youtube channel:
 
 www.youtube.com/toontowninjecting
+
+Usage
+-----
+ToonBot.py needs to be placed inside the "mods" folder of toontown
+
+Autoer gui will be automatically updated from this respitory
