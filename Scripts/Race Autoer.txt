@@ -74,6 +74,6 @@ value to the other toon(s). If you do not do this no trophies will be gained.",
             'pos':(5,1)
             }
         },\
-    'location':'http://goo.gl/GT7Il'}
+    'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/RaceAutoer.py'}
 
 toonBot.addScript(script)

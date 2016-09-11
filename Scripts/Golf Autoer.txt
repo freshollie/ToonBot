@@ -55,6 +55,6 @@ script={
             'pos':(3,1)
             },
         },\
-    'location':'http://goo.gl/blExO'}
+    'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/GolfAutoer.py'}
 
 toonBot.addScript(script)

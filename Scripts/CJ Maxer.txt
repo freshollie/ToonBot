@@ -35,6 +35,6 @@ channel (ToontownInjecting).",
             'pos':(0,1)
             }  
         },\
-    'location':'http://goo.gl/4Ut9p'}
+    'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/CJMaxer.py'}
 
 toonBot.addScript(script)

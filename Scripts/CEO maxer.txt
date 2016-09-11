@@ -46,6 +46,6 @@ and it does the CEO when it is ready.",\
             'pos':(1,1)
             }  
         },\
-    'location':'http://goo.gl/Z70Sc'}
+    'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/CEOMaxer.py'}
 
 toonBot.addScript(script)

@@ -34,6 +34,6 @@ functions used can be found on my channel (ToontownInjecting).",
             'pos':(0,1)
             }
         },\
-    'location':'http://goo.gl/4h197'}
+    'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/FishAutoer.py'}
 
 toonBot.addScript(script)

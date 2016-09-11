@@ -171,7 +171,7 @@ script to make it tidier and integrate it with toonbot.",\
 			}
 			
 		},\
-	'location':'http://goo.gl/7a0NXb'}
+	'location':'http://raw.githubusercontent.com/freshollie/ToontownAutoers/master/GagTrainer15.py'}
 
 try:
 	toonBot.addScript(script)
