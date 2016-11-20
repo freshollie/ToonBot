@@ -12,3 +12,9 @@ Usage
 ToonBot.py needs to be placed inside the "mods" folder of toontown
 
 Autoer gui will be automatically updated from this respitory
+
+# Actual Scripts
+
+The actual scripts these autoers downloads and run is stored under:
+
+www.github.com/freshollie/ToontownAutoers/
