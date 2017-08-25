@@ -335,6 +335,12 @@ class Scroller:
         self.textNode.destroy()
         
 class ToonBot:
+    TOONBOT_DIRECTORY = "toonbot/"
+    SCRIPTS_DIRECTORY = TOONBOT_DIRECTORY + "scripts/"
+    LIBS_DIRECTORY = TOONBOT_DIRECTORY + "libs/"
+
+    TOONBOT_STRING = "ToonBot: "
+
     def __init__(self):
         self.scriptCurrentlyLoaded=False
         self.scriptLoaded=None
@@ -356,28 +362,28 @@ class ToonBot:
             'description':'None'}
         self.scripts=[self.defaultScript]
         
-        if not os.path.exists('Toon Bot/Scripts/'):
-            os.makedirs('Toon Bot/Scripts/')
-            os.makedirs('Toon Bot/Libs/')
+        if not os.path.exists(ToonBot.SCRIPTS_DIRECTORY):
+            os.makedirs(ToonBot.SCRIPTS_DIRECTORY)
+            os.makedirs(ToonBot.LIBS_DIRECTORY)
         self.createGui()
         self.importScripts()
         
     def addScript(self,script):
         if 'https://' not in script['location']:
-            scriptLib=open("Toon Bot/Libs/"+script['name']+'.txt','w')
+            scriptLib=open(ToonBot.LIBS_DIRECTORY + script['name']+'.txt','w')
             scriptLib.write(str(script))
             scriptLib.close()
             self.importScripts()
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: '+script['name']+' Added to Toon-Bot, you will never need to inject it again!')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING+script['name']+' Added to Toon-Bot, you will never need to inject it again!')
         else:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: The script you tried to add contained a url with https, it needs to be http to work.')
+            base.localAvatar.setSystemMessage(0,'ToonBot: The script you tried to add contained a url with https, it needs to be http to work.')
         
     def downloadScript(self,script):
-        myfile=open('Toon Bot/Scripts/'+script['name']+'.txt','w')
+        myfile=open(ToonBot.SCRIPTS_DIRECTORY + script['name']+'.txt','w')
         try:
             downloadedScript=urllib.urlopen(script['location']).read()
         except:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: Script location doesnt exist')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'Script location doesnt exist')
             myfile.close()
             return False
         myfile.write(downloadedScript)
@@ -387,18 +393,18 @@ class ToonBot:
     def loadScript(self):
         if not self.scriptCurrentlyLoaded:
             script=self.scripts[self.scroller.listPos]
-            if script['location']=='None':
-                base.localAvatar.setSystemMessage(0,'Toon-Bot: Cannot load a script with no location')
+            if script['location'] == 'None':
+                base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'Cannot load a script with no location')
                 return
             if not self.downloadScript(script):
                 return 
-            myfile=open('Toon Bot/Scripts/'+script['name']+'.txt','r')
+            myfile=open(ToonBot.SCRIPTS_DIRECTORY + script['name'] + '.txt','r')
             for line in myfile:
                 if '#outdated' in line:
-                    base.localAvatar.setSystemMessage(0,'Toon-Bot: The Script you loaded appears to be outdated, go to the authors youtube to download the latest version')
+                    base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'The Script you loaded appears to be outdated, go to the authors youtube to download the latest version')
                     break
             myfile.close()
-            execfile('Toon Bot/Scripts/'+script['name']+'.txt',globals())
+            execfile(ToonBot.SCRIPTS_DIRECTORY + script['name'] + '.txt',globals())
             self.scriptCurrentlyLoaded=True
             self.scriptLoaded=script
             self.options.open()
@@ -406,7 +412,7 @@ class ToonBot:
             self.closeAutoerGuiButton.show()
             self.openAutoerGuiButton.hide()
         else:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: You already have a script loaded. Unload that script before reloading a new one')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'You already have a script loaded. Unload that script before reloading a new one')
     
     def unloadScript(self):
         if self.scriptCurrentlyLoaded:
@@ -419,9 +425,9 @@ class ToonBot:
                 self.closeAutoerGuiButton.hide()
                 self.openAutoerGuiButton.show()
             else:
-                base.localAvatar.setSystemMessage(0,'Toon-Bot: You cannot unload a script while the script is running')
+                base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'You cannot unload a script while the script is running')
         else:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: You currently do not have a loaded script')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'You currently do not have a loaded script')
             
     def startScript(self):
         if not self.scriptOn:
@@ -429,25 +435,25 @@ class ToonBot:
                 self.scriptOn=True
                 eval(self.scriptLoaded['start'])
             else:
-                base.localAvatar.setSystemMessage(0,'Toon-Bot: You cannot start a script that has not been loaded')
+                base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'You cannot start a script that has not been loaded')
         else:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: The script is already running')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'The script is already running')
         
     def stopScript(self):
         if self.scriptOn:
             self.scriptOn=False
             eval(self.scriptLoaded['stop'])
         else:
-            base.localAvatar.setSystemMessage(0,'Toon-Bot: The script is already stopped')
+            base.localAvatar.setSystemMessage(0, ToonBot.TOONBOT_STRING + 'The script is already stopped')
         
         
     def importScripts(self):
         self.scripts=[]    
-        for script in os.listdir('Toon Bot/Libs/'):
+        for script in os.listdir(ToonBot.LIBS_DIRECTORY):
             try:
-                self.scripts.append(eval(open("Toon Bot/Libs/"+script,'r').read()))
+                self.scripts.append(eval(open(ToonBot.LIBS_DIRECTORY + script,'r').read()))
             except:
-                os.remove("Toon Bot/Libs/"+script)
+                os.remove(ToonBot.LIBS_DIRECTORY + script)
             
         if self.scripts==[]:
             self.scripts=[self.defaultScript]
@@ -572,8 +578,8 @@ class ToonBot:
 
 define='''
 toonBot=executeToonbot('return')
-myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
-script=urllib.urlopen('http://goo.gl/mr9a0r').read()
+myfile=open(ToonBot.SCRIPTS_DIRECTORY + 'AutoerGui.txt','w')
+script=urllib.urlopen('http://raw.githubusercontent.com/freshollie/ToonBot/master/AutoerGui.py').read()
 myfile.write(script)
 myfile.close()
 execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
@@ -588,9 +594,9 @@ def executeToonbot(type):
         return toonBot
   
 toonBot=ToonBot()
-myfile=open('Toon Bot/Scripts/AutoerGui.txt','w')
+myfile=open(ToonBot.SCRIPTS_DIRECTORY + 'AutoerGui.txt','w')
 script=urllib.urlopen('http://raw.githubusercontent.com/freshollie/ToonBot/master/AutoerGui.py').read()
 myfile.write(script)
 myfile.close()
-execfile('Toon Bot/Scripts/AutoerGui.txt',globals())
+execfile(ToonBot.SCRIPTS_DIRECTORY + 'AutoerGui.txt', globals())
 
